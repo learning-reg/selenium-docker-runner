@@ -14,12 +14,6 @@ pipeline {
                 sh "docker-compose -f test-suites.yaml up"
             }
         }
-
-        stage('Bring Grid Down') {
-            steps {
-                sh "docker-compose down"
-            }
-        }
     }
 
     post {
