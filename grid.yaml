@@ -1,30 +1,20 @@
 version: '3'
 services:
   hub:
-   image: seleniarm/hub:4.16
+    image: seleniarm/hub:4.16
   chrome:
     image: seleniarm/node-chromium:4.16
     shm_size: '2g'
     depends_on:
       - hub
     deploy:
-      replicas: 1
-    environment:
-      - SE_EVENT_BUS_HOST
-      - SE_EVENT_BUS_PUBLISH_PORT
-      - SE_EVENT_BUS_SUBSCRIBE_PORT
-      - SE_NODE_OVERRIDE_MAX_SESSOINS
-      - SE_NODE_MAX_SESSIONS
+      replicas: 0
+    env_file: .env
   firefox:
     image: seleniarm/node-firefox:4.16
     shm_size: '2g'
     depends_on:
       - hub
     deploy:
-      replicas: 1
-    environment:
-      - SE_EVENT_BUS_HOST
-      - SE_EVENT_BUS_PUBLISH_PORT
-      - SE_EVENT_BUS_SUBSCRIBE_PORT
-      - SE_NODE_OVERRIDE_MAX_SESSOINS
-      - SE_NODE_MAX_SESSIONS
+      replicas: 0
+    env_file: .env
